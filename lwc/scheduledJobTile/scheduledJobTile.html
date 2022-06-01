@@ -1,0 +1,117 @@
+<template>
+    <lightning-layout horizontal-align="left" class="slds-grid slds-grid_vertical slds-text-align--left">
+        <lightning-layout-item horizontal-align="left" class="slds-text-align--left">
+            <lightning-icon icon-name="standard:loop"></lightning-icon>
+            <b class="slds-var-p-left_x-small slds-text-link slds-text-link_reset" onclick={showJobDetailModalHandler}>{jobDetail.Name}</b>
+        </lightning-layout-item>
+        <lightning-layout-item class="slds-text-align--left slds-m-top_small">
+            <lightning-layout>
+                <lightning-layout-item  horizontal-align="left" size="11">
+                    <div>
+                        <dl class="slds-dl_horizontal">
+                            <dt class="slds-dl_horizontal__label">
+                                <p class="slds-truncate" title="Submitted">Submitted:</p>
+                            </dt>
+                            <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                <p class="slds-truncate" title={jobDetail.TimeSubmitted}>{jobDetail.TimeSubmitted}</p>
+                            </dd>
+                            <dt class="slds-dl_horizontal__label">
+                                <p class="slds-truncate" title="Next Scheduled Run">Next Scheduled Run:</p>
+                            </dt>
+                            <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                                <p class="slds-truncate" title={jobDetail.TimeNextRun}>{jobDetail.TimeNextRun}</p>
+                            </dd>
+                        </dl>
+                    </div>
+                </lightning-layout-item>
+                <lightning-layout-item horizontal-align="right">
+                    <div>
+                        <lightning-button-icon icon-name="utility:delete" variant="border-filled" size="small" alternative-text="Delete Job" onclick={showDeleteModalHandler}></lightning-button-icon>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <!-- Delete Modal START -->
+
+    <template if:true={showDeleteModal}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+              <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                </svg>
+                <span class="slds-assistive-text">Cancel and close</span>
+              </button>
+              <div class="slds-modal__header">
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Delete Scheduled Job</h1>
+              </div>
+              <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                Are you sure you want to delete this Scheduled Job?
+              </div>
+              <div class="slds-modal__footer">
+                <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={cancelModalHandler}>Cancel</button>
+                <button class="slds-button slds-button_brand" onclick={deleteHandler}>Delete</button>
+              </div>
+            </div>
+          </section>
+          <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
+    
+    <!-- Delete Modal END -->
+
+    <!-- Job Detail Modal Modal START -->
+
+    <template if:true={showJobDetailModal}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+              <div class="slds-modal__header">
+                <h1 id="modal-heading-02" class="slds-modal__title slds-hyphenate">Job Details</h1>
+              </div>
+              <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                <div>
+                    <dl class="slds-dl_horizontal">
+                        <dt class="slds-dl_horizontal__label">
+                            <p class="slds-truncate" title="Submitted"><b>Job Name:</b></p>
+                        </dt>
+                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                            <p class="slds-truncate" title={jobDetail.TimeSubmitted}>{jobDetail.Name}</p>
+                        </dd>
+                        <dt class="slds-dl_horizontal__label">
+                            <p class="slds-truncate" title="Submitted"><b>Time Unit Type:</b></p>
+                        </dt>
+                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                            <p class="slds-truncate" title={jobDetail.TimeSubmitted}>{jobDetail.TimeUnitType}</p>
+                        </dd>
+                        <dt class="slds-dl_horizontal__label">
+                            <p class="slds-truncate" title="Submitted"><b>Time Unit:</b></p>
+                        </dt>
+                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                            <p class="slds-truncate" title={jobDetail.TimeSubmitted}>{jobDetail.TimeUnit}</p>
+                        </dd>
+                        <dt class="slds-dl_horizontal__label">
+                            <p class="slds-truncate" title="Submitted"><b>Submitted:</b></p>
+                        </dt>
+                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                            <p class="slds-truncate" title={jobDetail.TimeSubmitted}>{jobDetail.TimeSubmitted}</p>
+                        </dd>
+                        <dt class="slds-dl_horizontal__label">
+                            <p class="slds-truncate" title="Next Scheduled Run"><b>Next Scheduled Run:</b></p>
+                        </dt>
+                        <dd class="slds-dl_horizontal__detail slds-tile__meta">
+                            <p class="slds-truncate" title={jobDetail.TimeNextRun}>{jobDetail.TimeNextRun}</p>
+                        </dd>
+                    </dl>
+                </div>
+              </div>
+              <div class="slds-modal__footer">
+                <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={closeJobDetailModalHandler}>Close</button>
+              </div>
+            </div>
+          </section>
+          <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
+
+    <!-- Job Detail Modal Modal END -->
+</template>

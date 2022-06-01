@@ -1,0 +1,32 @@
+<template>
+    <lightning-card title="Schedule New Job" icon-name="standard:loop">
+        <div class="slds-var-p-left_medium slds-var-p-bottom_x-small">
+            <lightning-combobox name="JobName"
+                            label="Job Name"
+                            value={jobNameValue}
+                            options={jobNameOptions}
+                            onchange={jobNameChangeHandler}
+                            class="vsd-input-lengths"
+                            required="true"
+                            ></lightning-combobox>
+        </div>
+        <div class="slds-var-p-left_medium slds-var-p-bottom_x-small">
+            <lightning-combobox name="JobName"
+                            label="Time Unit Type"
+                            value={timeUnitTypeValue}
+                            options={timeUnitTypeOptions}
+                            onchange={timeUnitTypeChangeHandler}
+                            class="vsd-input-lengths"
+                            required="true"
+                            ></lightning-combobox>
+        </div>
+        <div class="slds-var-p-left_medium slds-var-p-bottom_x-small">
+            <lightning-input class="vsd-input-lengths" label="Time Unit" value={timeUnitValue} onchange={timeUnitChangeHandler} required="true"></lightning-input>
+        </div>
+        <div slot="footer">
+            <lightning-button label="Clear" onclick={clearOnClickHandler}></lightning-button>
+            <lightning-button class="slds-var-p-left_medium" label="Save" variant="brand" onclick={saveOnClickHandler}></lightning-button>
+        </div>
+    </lightning-card>
+    
+</template>

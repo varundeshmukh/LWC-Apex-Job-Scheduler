@@ -1,0 +1,12 @@
+<template>
+    <lightning-card>
+        <lightning-button-icon slot="actions" icon-name="utility:refresh" variant="border-filled" size="small" alternative-text="Refresh Queue" onclick={refreshHandler}></lightning-button-icon>
+        <template for:each={jobDetails} for:item="jobDetail">
+            <div class="slds-var-p-around_x-small" key={jobDetail.Name}>
+                <div class="slds-var-p-around_medium lgc-bg" key={jobDetail.Id}>
+                    <c-scheduled-job-tile job-detail={jobDetail} ondeletejob={refreshHandler}></c-scheduled-job-tile>
+                </div>
+            </div>
+        </template>
+    </lightning-card>
+</template>
